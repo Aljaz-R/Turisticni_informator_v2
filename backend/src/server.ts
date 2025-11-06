@@ -29,6 +29,31 @@ app.get("/countries/:id/cities", async (req, res, next) => {
   } catch (e) { next(e); }
 });
 
+app.get("/cities/:id", async (req,res,next)=>{
+  try{
+    const id = Number(req.params.id);
+    if(!Number.isFinite(id)) return res.status(400).json({error:"invalid_city_id"});
+    const { rows } = await db.query(
+      "SELECT id,name,description,hero_url FROM cities WHERE id=$1",[id]
+    );
+    if(!rows.length) return res.status(404).json({error:"city_not_found"});
+    res.json(rows[0]);
+  }catch(e){ next(e); }
+});
+
+app.get("/cities/:id/images", async (req, res, next) => {
+  try {
+    const id = Number(req.params.id);
+    if (!Number.isFinite(id)) return res.status(400).json({ error: "invalid_city_id" });
+    const { rows } = await db.query(
+      "SELECT url FROM city_images WHERE city_id=$1 ORDER BY sort_order, id",
+      [id]
+    );
+    res.json(rows.map(r => r.url));
+  } catch (e) { next(e); }
+});
+
+
 app.use((_err:any, _req:any, res:any, _next:any) => res.status(500).json({ error: "internal_error" }));
 
 const port = Number(process.env.PORT || 3000);
