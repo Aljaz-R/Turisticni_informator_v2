@@ -1,0 +1,17 @@
+Title	URL	Sprint Backlog	Assignees	Status
+Izbira države	https://github.com/anciromih17/Turisticni_Informator/issues/1	1.1 DB countries + seed, 1.2 API /countries, 1.3 UI dropdown + state, 1.4 Validacija + trigger		Done
+Prikaz mest	https://github.com/anciromih17/Turisticni_Informator/issues/2	2.1 API /countries/{id}/cities, 2.2 UI seznam mest skeleton				Done
+Podrobnosti mesta	https://github.com/anciromih17/Turisticni_Informator/issues/3			
+Filtriranje znamenitosti	https://github.com/anciromih17/Turisticni_Informator/issues/4			
+Iskanje znamenitosti	https://github.com/anciromih17/Turisticni_Informator/issues/5			
+Podrobnosti znamenitosti	https://github.com/anciromih17/Turisticni_Informator/issues/6			
+Admin nadozorna plošča	https://github.com/anciromih17/Turisticni_Informator/issues/7			
+Top 8 znamenitosti	https://github.com/anciromih17/Turisticni_Informator/issues/8			
+Zemljevid znamenitosti	https://github.com/anciromih17/Turisticni_Informator/issues/9			
+Komentarji	https://github.com/anciromih17/Turisticni_Informator/issues/10			
+Ocene	https://github.com/anciromih17/Turisticni_Informator/issues/11			
+Seznam želja mest	https://github.com/anciromih17/Turisticni_Informator/issues/12			
+Zgodovina obiskanih mest	https://github.com/anciromih17/Turisticni_Informator/issues/13			
+Načrtovanje potovanja	https://github.com/anciromih17/Turisticni_Informator/issues/14			
+Priporočila najbližjih	https://github.com/anciromih17/Turisticni_Informator/issues/15			
+»Misteriozna« pot	https://github.com/anciromih17/Turisticni_Informator/issues/16			
