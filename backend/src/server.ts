@@ -52,6 +52,39 @@ app.get("/cities/:id/images", async (req, res, next) => {
     res.json(rows.map(r => r.url));
   } catch (e) { next(e); }
 });
+// GET /attractions?city_id=&type=&q=
+app.get('/attractions', async (req,res,next)=>{
+  try{
+    const cityId = req.query.city_id ? Number(req.query.city_id) : undefined;
+    const type = (req.query.type as string|undefined)?.trim();
+    const q = (req.query.q as string|undefined)?.trim();
+    const where:string[] = [];
+    const vals:any[] = [];
+    if (Number.isFinite(cityId)) { where.push(`city_id = $${vals.length+1}`); vals.push(cityId); }
+    if (type) { where.push(`type ILIKE $${vals.length+1}`); vals.push(type); }
+    if (q) { where.push(`(name ILIKE $${vals.length+1} OR description ILIKE $${vals.length+1})`); vals.push(`%${q}%`); }
+    const sql =
+      `SELECT id,city_id,name,type,thumbnail_url
+       FROM attractions
+       ${where.length?'WHERE '+where.join(' AND '):''}
+       ORDER BY name`;
+    const { rows } = await db.query(sql, vals);
+    res.json(rows);
+  }catch(e){ next(e); }
+});
+
+// GET /attractions/:id
+app.get('/attractions/:id', async (req,res,next)=>{
+  try{
+    const id = Number(req.params.id);
+    if(!Number.isFinite(id)) return res.status(400).json({error:'invalid_attraction_id'});
+    const { rows } = await db.query(
+      'SELECT id,city_id,name,type,description,hero_url,thumbnail_url,lat,lng FROM attractions WHERE id=$1',[id]
+    );
+    if(!rows.length) return res.status(404).json({error:'attraction_not_found'});
+    res.json(rows[0]);
+  }catch(e){ next(e); }
+});
 
 
 app.use((_err:any, _req:any, res:any, _next:any) => res.status(500).json({ error: "internal_error" }));
