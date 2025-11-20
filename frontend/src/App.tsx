@@ -28,6 +28,7 @@ export default function App() {
         >
           Znamenitosti
         </Link>
+        <Link to="/admin">Admin</Link>
       </header>
 
       <h1>Turistični informator</h1>
