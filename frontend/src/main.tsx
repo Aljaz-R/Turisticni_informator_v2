@@ -11,18 +11,11 @@ import AdminPage from "./pages/AdminPage";
 const qc = new QueryClient();
 
 const router = createBrowserRouter([
-<<<<<<< Updated upstream
   { path:"/", element:<App/> },
   { path:"/city/:id", element:<CityPage/> },
   { path:"/attractions", element:<AttractionsPage/> },
   { path:"/attraction/:id", element:<AttractionPage/> },
-=======
-  { path: "/", element: <App /> },
-  { path: "/city/:id", element: <CityPage /> },
-  { path: "/attractions", element: <AttractionsPage /> },
-  { path: "/attraction/:id", element: <AttractionPage /> },   // <-- VEJICA DODANA
->>>>>>> Stashed changes
-  { path: "/admin", element: <AdminPage /> }
+  { path:"/admin", element:<AdminPage/> }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
