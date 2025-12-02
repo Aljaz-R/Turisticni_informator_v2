@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
@@ -46,6 +47,12 @@ export default function AdminPage(){
           <ul>{cities.data?.map((c:any)=><li key={c.id}>#{c.id} ({c.country_id}) {c.name}</li>)}</ul>
         </div>
       </section>
+=======
+export default function AdminPage() {
+  return (
+    <div>
+      <h1>Admin Page</h1>
+>>>>>>> Stashed changes
     </div>
   );
 }
